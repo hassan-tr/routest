@@ -8,6 +8,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {AuthContext, AuthContextProvider} from "./context/authContext";
 import Login from "./pages/Login";
 
+
 function App() {
     const navigate = useNavigate()
     const location = useLocation()
@@ -15,10 +16,10 @@ function App() {
     const [loading, setLoading] = useState(true)
 
     useEffect( () =>{
-        setTimeout(()=>{
-            setLoading(false)
-        },2000)
-    },[])
+        if(location.pathname === '/'){
+            navigate('/home')
+        }
+    },[location, navigate])
 
     useEffect(()=>{
         console.log(isLoggedIn)
@@ -45,11 +46,9 @@ function App() {
 const AppWrapper = () =>{
     return(
         <AuthContextProvider>
-            <React.StrictMode>
                 <BrowserRouter>
                     <App/>
                 </BrowserRouter>
-            </React.StrictMode>
         </AuthContextProvider>
     )
 }

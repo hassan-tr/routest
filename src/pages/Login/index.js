@@ -14,7 +14,7 @@ const Login = () => {
 
     const onSubmit = () => {
         setIsLoggedIn(true)
-        setTimeout(()=>window.location.replace('/home'),2000)
+        window.location.replace('/')
     }
 
     return (
